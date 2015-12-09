@@ -1,0 +1,14 @@
+<div class="wrapper-for-content-outside-of-footer">
+	<div class="full_view" style="background-image: url('<%= @gallery.avatar %>')">
+		<div class="text_block">
+			<h1><%= @gallery.name %></h1>
+			<hr>
+			<h2><%= @gallery.address %></h2>
+			<h3><%= @gallery.phone %></h3>
+			<li><%= link_to "Edit gallery", edit_gallery_path(session[:user_id]) %></li>
+			<li><%= link_to "Create Exhibition", new_gallery_exhibition_path(@gallery.id) %></li><br>
+		</div>
+	</div>
+</div>
+
+	

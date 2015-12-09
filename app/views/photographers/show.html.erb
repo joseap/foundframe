@@ -1,0 +1,11 @@
+<div class="wrapper-for-content-outside-of-footer">
+	<div class="full_view">
+		<div class="text_block">
+			<h1><%= @photographer.name %></h1>
+			<hr>
+			<h2><%= @photographer.description %></h2>
+		</div>
+		<%= image_tag @photographer.avatar.url(:big) %>
+	</div>
+</div>
+

@@ -1,0 +1,29 @@
+<div class="form_wrapper">
+	<h2>Enter New Exhibition</h2>
+
+	<%= form_for @exhibitions, :url => gallery_exhibitions_path, :html => { :multipart => true } do |e| %>
+		<div class="field">
+			<%= e.label :artist %>
+			<%= e.text_field :artist %>
+		</div>
+
+		<div class="field">
+			<%= e.label :name %>
+			<%= e.text_field :name %>
+		</div>
+
+		<div class="field">
+			<%= e.label :date %>
+			<%= e.text_field :date %>
+		</div>
+		<br>
+		<div class="field">
+			<%= e.file_field :avatar %>
+		</div>
+		<br>
+		<div class="actions">
+			<%= e.submit "Create" %>
+		</div>
+	<% end %>
+</div>
+

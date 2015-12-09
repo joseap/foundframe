@@ -1,0 +1,24 @@
+<div class="form_wrapper">
+	<h2>Enter New Feature</h2>
+
+	<%= form_for @photographer, :url => photographers_path, :html => { :multipart => true } do |p| %>
+		<div class="field">
+			<%= p.label :name %>
+			<%= p.text_field :name %>
+		</div>
+
+		<div class="field">
+			<%= p.label "Description" %>
+			<%= p.text_area :description %>	
+		</div>
+		<br>
+		<div class="field">
+			<%= p.file_field :avatar %>
+		</div>
+		<br>
+		<div class="actions">
+			<%= p.submit "Create Feature" %>
+		</div>
+	<% end %>
+</div>
+

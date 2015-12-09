@@ -1,0 +1,43 @@
+	<div class="user_details">
+			<h3><%= flash[:created] if flash[:created] %></h3>
+
+			<h3><%= "Welcome " + @user.username %></h3>
+			<h3><%= flash[:updated] if flash[:updated] %></h3>
+
+				<!-- avatar image -->
+				<%= image_tag @user.avatar.url(:thumb) if @user.avatar.present? %>
+			<br><br>
+			<h2> USER PROFILE </h2>
+			<h2>Username</h2>
+			<p><%= @user.username %></p>
+			<h2>Email</h2>
+			<p><%= @user.email %></p>
+			<hr><br>
+
+			<div class="edit_links">
+				<li><%= link_to "Create Gallery", new_gallery_path %></li><br>
+				<li><%= link_to "Create Feature", new_photographer_path %></li><br>
+				<li><%= link_to "Edit User", edit_user_path(session[:user_id]) %></li>
+			</div>
+		</div>
+
+		<div class="gallery_list">
+			<h1>Gallery List</h1>
+
+			<% @user.galleries.each do |gallery| %>
+				<li><%= link_to gallery.name + " / " + gallery.address, gallery_path(gallery.id) %><% if gallery.user_id == session[:user_id] %> / 
+					<%= link_to "delete", gallery, method: :delete, data: { confirm: "ARE YOU SUUUUUUURE?"} %>
+				<% end %></li><br>
+				
+			<% end %>
+		</div>
+
+		
+		<div class="gallery_list">
+			<h1>Exhibition List</h1>
+
+			<% @user.exhibitions.each do |exhibition| %>
+				<li><%= link_to exhibition.name, gallery_exhibition_path(gallery.id) %></li>
+			<% end %>
+		</div>
+
