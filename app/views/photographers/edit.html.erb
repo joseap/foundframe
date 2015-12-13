@@ -1,0 +1,20 @@
+<div class="form_wrapper">
+	<%= form_for @photographer , :html => { :multipart => true } do |f| %>
+			<h2>PROFILE PIC </h2>
+			<%= image_tag @photographer.avatar.url(:thumb) if @photographer.avatar.present? %>
+			<br>
+			<%= f.file_field :avatar %> 
+			<li><%= f.label "Name" %>
+			<p style="color:#000"><%= f.text_field :name %></p>
+			<li><%= f.label "Project" %></li>
+			<p><%= f.text_field :project %></p>
+			<li><%= f.label "Description" %></li>
+			<p><%= f.text_area :description %></p>
+			<%= f.submit "Update" %>
+			<br><br>
+			<div class="actions">
+				<%= link_to "Go Back", photographer_path %>
+			</div><br>
+	 	<%= link_to "Delete", @photographer, data: { confirm: "OMG, OMG, OMG ARE YOU SURE!?" }, method: :delete%>
+	<% end %>
+</div>

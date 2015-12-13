@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208200614) do
+ActiveRecord::Schema.define(version: 20151211162629) do
 
   create_table "exhibitions", force: :cascade do |t|
     t.string   "artist"
     t.string   "name"
-    t.datetime "date"
     t.integer  "user_id"
     t.integer  "gallery_id"
     t.datetime "created_at",          null: false
@@ -25,6 +24,8 @@ ActiveRecord::Schema.define(version: 20151208200614) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.date     "date"
+    t.date     "end_date"
   end
 
   create_table "galleries", force: :cascade do |t|
@@ -33,6 +34,20 @@ ActiveRecord::Schema.define(version: 20151208200614) do
     t.string   "phone"
     t.float    "longitude"
     t.float    "latitude"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "website"
+  end
+
+  create_table "issues", force: :cascade do |t|
+    t.string   "issue_number"
+    t.string   "issue_title"
+    t.string   "issue_description"
     t.integer  "user_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
@@ -58,12 +73,13 @@ ActiveRecord::Schema.define(version: 20151208200614) do
     t.string   "username"
     t.string   "email"
     t.string   "password"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "admin",               default: false
   end
 
 end

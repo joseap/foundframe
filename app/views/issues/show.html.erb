@@ -1,0 +1,13 @@
+<div class="portfolio_view">
+	<div class="portfolio_text">
+		<h1>Issue no. <%= @issue.issue_number %></h1>
+		<h2><%= @issue.issue_title %></h2>
+		<hr>
+		<h3><%= simple_format(@issue.issue_description) %></h3>
+	</div>
+	<div class="slideshow">
+		<%= image_tag @issue.avatar.url(:big) %><br>
+		<li><%= link_to "Edit Issue", edit_issue_path %></li>
+	</div>
+	<br>
+</div>

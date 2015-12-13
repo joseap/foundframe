@@ -1,13 +1,23 @@
-<div class="wrapper-for-content-outside-of-footer">
-	<div class="full_view">
-		<div class="text_block">
-			<h1><%= @exhibition.artist %></h1>
-			<hr>
-			<h2><%= @exhibition.name %></h2>
-			<h3><%= @exhibition.description %></h3>
-			<h3><%= @exhibition.date %></h3>
+<div class="full_view" style="background-image: url('<%= @exhibition.avatar %>')">
+	<div class="text_block">
+		<h1><%= @exhibition.artist %></h1>
+		<hr>
+		<h2><%= @exhibition.name %></h2>
+		<h2><%= @gallery.address %></h2>
+		<h3>&#10163; <%= @gallery.phone %></h3>
+		<h3>&#10163; From: <%= @exhibition.date %></h3>
+		<h3>&#10163; To: <%= @exhibition.end_date %></h3>
+		<hr>
+		<h3 style="color:#ff7700; text-align:center"><%= link_to 'Download to Calendar', { controller: 'exhibitions', action: :show, format: :ics } %></h3>
+		<hr>
+		<% if session[:user_id] == 2 %>
+		<li><%= link_to "Edit exhibition", edit_gallery_exhibition_path %></li><br>
+		<% end %>
+		<div class="actions">
+			<a href="<%= @gallery.website %>" target="_blank">Website</a>
 		</div>
 	</div>
 </div>
+
 
 	

@@ -1,9 +1,38 @@
-<div class="wrapper-for-content-outside-of-footer">
+<div class="wrapper-for-content-outside-of-footer animated fadeIn">
 	<!-- SECTION 1 / MAP NAVIGATION -->
 	<section>
+		<div class="map_title">
+			<h1>Find an Exhibition Nearby</h1>
+			<hr>
+			<br>
+			<div class="search_map">
+				<%= form_tag galleries_path, :method => :get do %>
+				  <p>
+				    <%= text_field_tag :search, params[:search] %>
+				    <%= submit_tag "Search Near", :name => nil %>
+				  </p>
+				<% end %>
+				<h2 style="color:#f3fffd">&#10086;</h2>
+
+			</div>
+		</div>
+		
 		<div class="map_navigation">
-			<div class="map"></div>
-			<div class="desc-box"></div>
+			<div class="map">
+				 <div id="map" style='width: 100%; height: 100%;'></div>
+			</div>
+
+			<script>
+			var mapStyle = [
+				  {"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}
+				];
+
+				buildMap(<%=raw @hash.to_json %>);
+
+			</script>
+			<div id="desc-box">
+				
+			</div>
 		</div>
 	</section>
 	<!-- END OF SECTION 1 -->
@@ -12,7 +41,15 @@
 	<section>
 		<div class="event_section">
 			<div class="events">
-				
+			<h1><em>This Month</em></h1>
+			<hr style="width:100px; margin:0 auto">
+			<br><br>
+			<% @exhibitions.reverse_each do |exhibition| %>
+				<h2><span class="links_to"><%= link_to exhibition.artist, gallery_exhibition_path(exhibition.gallery_id, exhibition.id) %></span></h2>
+				<h3><%= exhibition.name %></h3>
+				<h4><%= exhibition.date %> to <%= exhibition.end_date %></h4>
+				&bull;<br><br>
+			<% end %>
 			</div>
 		</div>
 	</section>
@@ -21,23 +58,89 @@
 	<!-- SECTION 3 / FEATURES -->
 	<section>
 		<div class="features_section">
-			<div class="main_feature_row"></div>
-			<div class="secondary_feature"></div>
-			<div class="secondary_feature"></div>
-			<div class="secondary_feature"></div>
-			<div class="secondary_feature"></div>
+				<div class="main_feature_row" >
+					<div class="gray_overlay">
+						<h1><a href="/photographers">Latest Features</a> </h1>
+					</div>
+				</div>
+			<div class="secondary_features">
+				<% @photographers.take(4).each do |photographer| %>
+					<div class="feature_grid animated zoomIn" style="background-image:url('<%= photographer.avatar %>')">
+						<div class="gray_overlay">
+							<div class="photo_links">
+								<h1><%= link_to photographer.name, photographer_path(photographer.id) %></h1>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
 		</div>
 	</section>
 	<!-- END OF SECTION 3 -->
 
 	<!-- SECTION 4 / ISSUE DOWNLOAD -->
 	<section>
-		<div class="issue_section">
-			<div class="main_vertical_column"></div>
-			<div class="secondary_vertical_column"></div>
-			<div class="secondary_vertical_column"></div>
-			<div class="third_vertical_column"></div>
-		</div>
+		<% @issues.take(1).each do |issue| %>
+			<div class="issue_section">
+				<div class="issue_title">
+					<h1>Issue No. <%= issue.issue_number %></h1>
+				</div>
+
+				<div class="main_vertical_column">
+					<%= image_tag issue.avatar.url(:medium) %>
+				</div>
+				
+				<div class="secondary_vertical_column">
+					<br>
+					<h3><%= issue.issue_title %></h3><br>
+					<p><%= issue.issue_description %></p>
+				</div>
+			
+				<div class="third_vertical_column">
+					<br>
+					<h3><%= issue.created_at.strftime("%B / %Y") %></h3>
+					<br>
+					<div class="actions2">
+						<a href="<%= issue_path(issue.id) %>" target="_blank">Read More</a>
+					</div>
+					<br>
+					<div class="actions">
+						<a href="javascript:void(0)" target="_blank">Download</a>
+					</div>
+					<br>
+					<br>
+					<h2>&#10086;</h2>
+				</div>
+			</div>
+		<% end %>
 	</section>
 	<!-- END OF SECTION 4 -->
 </div>
+
+	<footer class="footer-2" role="contentinfo">
+	  <div class="footer-logo">
+	    &copy; <%= image_tag('foundframe_dark@2x.png') %>	  
+    </div>
+	    <ul>
+	      <li><a href="javascript:void(0)">About</a></li>
+	      <li><a href="javascript:void(0)">Contact</a></li>
+	      <li><a href="javascript:void(0)">Products</a></li>
+	    </ul>
+
+	    <div class="footer-secondary-links">
+	      <ul>
+	        <li><a href="javascript:void(0)">Terms and Conditions</a></li>
+	        <li><a href="javascript:void(0)">Privacy Policy</a></li>
+	      </ul>
+
+	      <ul class="footer-social">
+	        <li><a href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i>
+	          </a></li>
+	        <li><a href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
+	        <li><a href="http://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
+	        <li><a href="http://www.tumblr.com" target="_blank"><i class="fa fa-tumblr"></i></a></li>
+	      </ul>
+	    </div>
+	</footer>
+
+<!-- END OF FOOTER -->

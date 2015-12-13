@@ -1,14 +1,44 @@
-<div class="wrapper-for-content-outside-of-footer">
-	<div class="full_view" style="background-image: url('<%= @gallery.avatar %>')">
-		<div class="text_block">
-			<h1><%= @gallery.name %></h1>
-			<hr>
-			<h2><%= @gallery.address %></h2>
-			<h3><%= @gallery.phone %></h3>
-			<li><%= link_to "Edit gallery", edit_gallery_path(session[:user_id]) %></li>
+<div class="full_view" style="background-image: url('<%= @gallery.avatar %>')">
+	<div class="text_block">
+		<h1><%= @gallery.name %></h1>
+		<hr>
+		<h2><%= @gallery.address %></h2>
+		<h3><%= @gallery.phone %></h3>
+		<br>
+		<% if session[:user_id] == 2 %>
+			<li><%= link_to "Edit gallery", edit_gallery_path(params[:id]) %></li>
 			<li><%= link_to "Create Exhibition", new_gallery_exhibition_path(@gallery.id) %></li><br>
+		<% end %>
+		<hr>
+		<div class="actions">
+			<a href="<%= @gallery.website %>" target="_blank">Website</a>
 		</div>
+	</div>
+	<!-- LIST OF EXHIBITIONS FOR EACH GALLERY -->
+	<div class="exhibit_list">
+		<h1>Current Exhibitions at <%= @gallery.name %></h1>
+		<hr>
+		<br>
+		<% if !@gallery.exhibitions.present? %>				
+					<h1 style="color:#f3fffd">Sorry, no exhibitions here at the moment</h1>
+				<% else %>
+			<% @gallery.exhibitions.take(4).each do |exhibition| %>
+				<ul>
+					<li><%= link_to exhibition.artist, gallery_exhibition_path(exhibition.gallery_id, exhibition.id) %></li>
+					<li><%= exhibition.name %></li>
+					<li><%= exhibition.date %> to <%= exhibition.end_date %></li>
+					&bull;<br>
+				</ul>
+				<% end %>
+			<% end %>
+
+			<h1>Other Galleries Nearby</h1><hr>
+			<ul>
+				<% for gallery in @gallery.nearbys(2) %>
+					<li><%= link_to gallery.name, gallery %> (<%= gallery.distance.round(2) %> miles)</li>
+				<% end %><br>
+			</ul>
+
 	</div>
 </div>
 
-	

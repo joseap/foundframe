@@ -1,0 +1,20 @@
+<div class="form_wrapper">
+	<%= form_for @issue , :html => { :multipart => true } do |f| %>
+			<h2>Cover</h2>
+			<%= image_tag @issue.avatar.url(:thumb) if @issue.avatar.present? %>
+			<br>
+			<%= f.file_field :avatar %> 
+			<li><%= f.label "Issue Number" %>
+			<p style="color:#000"><%= f.number_field :issue_number, { min: 0} %></p>
+			<li><%= f.label "Issue Title" %>
+			<p style="color:#000"><%= f.text_field :issue_title %></p>
+			<li><%= f.label "Description" %></li>
+			<p><%= f.text_area :issue_description %></p>
+			<%= f.submit "Update" %>
+			<br><br>
+			<div class="actions">
+				<%= link_to "Go Back", issue_path %>
+			</div><br>
+	 	<%= link_to "Delete", @issue, data: { confirm: "OMG, OMG, OMG ARE YOU SURE!?" }, method: :delete%>
+	<% end %>
+</div>

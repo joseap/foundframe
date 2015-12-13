@@ -1,0 +1,6 @@
+<% @issues.each do |issue| %>
+	<%= image_tag issue.avatar %>
+	<h1>Issue no. <%= issue.issue_number %></h1>
+	<h2>"<%= issue.issue_title %>"</h2>
+<% end %>
+

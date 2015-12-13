@@ -1,11 +1,13 @@
-<section>
-	<div class="grid_column">
-		
-	</div>
-	<div class="grid_column">
-		
-	</div>
-	<div class="grid_column">
-		
-	</div>
-</section>
+<div class="wrapper-for-content-outside-of-footer">
+	<% @exhibitions.each do |exhibition| %>
+		<section>
+			<div class="grid_column animated fadeIn" style="background-image: url('<%= exhibition.avatar %>')">
+				<div class="column_wrapper">
+					<h1><%= link_to exhibition.name, gallery_exhibition_path(exhibition.gallery_id, exhibition.id) %></h1>
+					<h3><%= exhibition.artist %></h3>
+					<h2><%= exhibition.date %> to <%= exhibition.end_date %></h2>
+				</div>
+			</div>
+		</section>
+	<% end %>
+</div>

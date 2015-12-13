@@ -1,0 +1,35 @@
+<div class="form_wrapper">
+	<h2> Enter New Issue </h2> 
+
+	<%= flash[:correct_form] if flash[:correct_form] %>
+
+	<%= form_for @issue, :url => issues_path, :html => { :multipart => true } do  |i| %>
+		<div class="field">
+			<%= i.label :issue_number %>
+			<%= i.number_field :issue_number, { min: '0' } %>
+		</div>
+
+		<div class="field">
+			<%= i.label :issue_title %>
+			<%= i.text_field :issue_title %>
+		</div>
+
+		<div class="field">
+			<%= i.label :issue_description %>
+			<%= i.text_area :issue_description, :placeholder => "Please limit description to 1000 characters" %>
+		</div>
+
+		<div class="field">
+			<%= i.file_field :avatar %>
+		</div>
+
+		<div class="action">
+			<%= i.submit "Create Issue" %>
+		</div>
+		<br>
+		<br>
+		<div class="actions">
+			<%= link_to "Go Back", user_path(session[:user_id]) %>
+		</div>
+	<% end %>
+</div>

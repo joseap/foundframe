@@ -5,15 +5,17 @@
 			<br>
 			<%= f.file_field :avatar %> 
 			<li><%= f.label "Name" %>
-			<p><%= f.text_field :name %></p>
+			<p style="color:#000"><%= f.text_field :name %></p>
 			<li><%= f.label "Address" %></li>
 			<p><%= f.text_field :address %></p>
 			<li><%= f.label "Phone" %></li>
 			<p><%= f.text_field :phone %></p>
+			<li><%= f.label "Website" %></li>
+			<p><%= f.text_field :website %></p>
 			<%= f.submit "Update" %>
 			<br><br>
 			<div class="actions">
-				<%= link_to "Go Back", edit_gallery_path(session[:user_id])%>
+				<%= link_to "Go Back", gallery_path(session[:user_id])%>
 			</div><br>
 	 	<%= link_to "Delete", @gallery, data: { confirm: "OMG, OMG, OMG ARE YOU SURE!?" }, method: :delete%>
 	<% end %>

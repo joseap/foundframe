@@ -3,7 +3,7 @@
   background-color: $dark-gray;
   border: 0;
   border-radius: $base-border-radius;
-  color: #fff;
+  color: $orange;
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
@@ -21,7 +21,7 @@
   &:hover,
   &:focus {
     background-color: $orange;
-    color: #fff;
+    color: $dark-gray;
   }
 
   &:disabled {

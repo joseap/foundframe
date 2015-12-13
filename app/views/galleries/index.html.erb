@@ -1,11 +1,11 @@
-<% @galleries.each do |gallery| %>
-	<section>
-		<div class="grid_column" style="background-image: url('<%= gallery.avatar %>')">
-			<div class="column_wrapper">
-				<h1><%= link_to gallery.name, gallery_path(gallery.id) %></h1>
-				<h2><%= gallery.address %></h2>
-				<h3><%= gallery.phone %></h3>
+	<% @galleries.each do |gallery| %>
+		<section>
+			<div class="grid_column animated fadeIn" style="background-image: url('<%= gallery.avatar %>')">
+				<div class="column_wrapper">
+					<h1><%= link_to gallery.name, gallery_path(gallery.id) %></h1>
+					<h2><%= gallery.address %></h2>
+					<h3><%= gallery.phone %></h3>
+				</div>
 			</div>
-		</div>
-	</section>
-<% end %>
+		</section>
+	<% end %>	

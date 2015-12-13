@@ -1,7 +1,6 @@
 .wrapper-for-content-outside-of-footer {
-  min-height: 90%;
   height: auto !important;
-  margin: 0 auto -4em;
+  margin: 0 auto 5em;
   background: none !important;
 }
 
@@ -21,6 +20,7 @@
   display: inline-block;
   border-top: 1px solid $dark-gray;
   bottom: 0;
+  position: relative;
 
   .footer-logo {
     margin-right: 1em;

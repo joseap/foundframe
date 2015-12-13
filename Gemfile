@@ -24,14 +24,22 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Geocoder
-gem 'geocoder'
+gem 'geocoder', :git => 'git://github.com/alexreisner/geocoder.git'
 
 # Bourbon gems
 gem 'bourbon'
 gem 'neat'
 
+# GMAPS Gem
+gem 'gmaps4rails'
+
+# FILTERING GEM
+gem 'filterrific'
+
 # Paperclip
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+
+gem 'icalendar'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

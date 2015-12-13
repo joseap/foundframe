@@ -4,15 +4,20 @@ Rails.application.routes.draw do
 
   resources :users
   resources :photographers
+  resources :issues
   
   resources :galleries do
     resources :exhibitions
   end
 
+  resources :exhibitions, only: [:index, :show, :edit, :update, :destroy]
+
   # ===== SESSIONS ROUTES (AUTHENT) ===== *
   get '/login' => 'sessions#new' 
   post '/login' => 'sessions#create'
   get '/log_out' =>'sessions#destroy'
+
+  get '/explore' => "map#show"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

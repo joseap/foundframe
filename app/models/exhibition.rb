@@ -5,5 +5,5 @@ class Exhibition < ActiveRecord::Base
 	validates :name, presence: true, length: { minimum: 3}
 
 	belongs_to :user
-	belongs_to :post
+	belongs_to :gallery
 end

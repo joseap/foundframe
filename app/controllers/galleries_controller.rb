@@ -1,10 +1,9 @@
 class GalleriesController < ApplicationController
 	def index
-		@galleries = Gallery.all
-		if @gallery.present?
-			flash[:notice] = "Post List"
+		if params[:search].present?
+		    @galleries = Gallery.near(params[:search], 1, :order => "distance")
 		else
-			flash[:alert] = "No Posts Found"
+		 	@galleries = Gallery.all
 		end
 	end
 
@@ -13,7 +12,6 @@ class GalleriesController < ApplicationController
 	end
 
 	def new
-		@gallery = Gallery.new
 		@gallery = Gallery.new
 	end
 
@@ -26,6 +24,9 @@ class GalleriesController < ApplicationController
 				address: params[:gallery][:address], 
 				phone: params[:gallery][:phone], 
 				avatar: params[:gallery][:avatar],
+				website: params[:gallery][:website],
+				latitude: params[:gallery][:latitude],
+				longitude: params[:gallery][:longitude],
 				user_id: session[:user_id])
 
 		if @gallery.save
@@ -53,6 +54,6 @@ class GalleriesController < ApplicationController
 
 	private
 	def gallery_params
-		params.require(:gallery).permit(:name, :address, :phone, :avatar)
+		params.require(:gallery).permit(:name, :address, :phone, :avatar, :website, :latitude, :longitude)
 	end
 end

@@ -7,6 +7,10 @@ html, body
 	margin: 0
 	height: 100%
 
+///////// MAP SECTION /////////////
+#map_section
+	+span-columns(12)
+
 .map_navigation
 	+clearfix
 	+outer-container(100%)
@@ -16,27 +20,108 @@ html, body
 	+span-columns(9)
 	height: 500px
 
-.desc-box 
-	background: $orange
-	+span-columns(3)
+.map2
+	background: $dark-gray
+	+span-columns(12)
 	height: 500px
-	+pad()
+
+.marker_container 
+	border: none
+	border-radius: 0px
+	background: $orange
+	padding: 10px
+	font-size: 12px
+	font-family: $base-font-family
+	width: 320px
+	height: auto
+
+.marker_container h1
+	text-decoration: underline
+
+.marker_container a:hover
+	color: $blue
+
+///////// MAP OPTIONS FOR HOME AND EXPLORE PAGE /////////////
+
+.map_title
+	+span-columns(3)
+	float: right
+	padding: 5px
+	background-color: $dark-gray
+	text-align: center
+	height: 500px
+
+.map_title h1
+	text-align: center
+	color: $blue
+	font-size: 50px
+	padding: 20px
+	padding-top: 40px
+	line-height: 50px
+
+.search_block 
+	position: absolute
+	z-index: 999
+	display: inline-block
+	margin-left: 40px
+	margin-top: 20px
+
+.search_bar
+	width: 300px
+	background-color: rgba(0,0,0,0.7)
+	padding: 30px
+
+.search_map
+	width: 200px
+	margin: 0 auto
+
+
+///////// LEFT SIDEBAR / EVENTS /////////////
 
 .event_section
 	+span-columns(4)
 	height: 1000px
 	background: $dark-gray
+	overflow: scroll
 
 .events 
 	padding: 30px
 	color: $blue
+	padding-left: 0px
+	text-align: center
 
 .events h1
 	color: $orange
-	font-size: 40px
+	font-size: 30px
+
+.events h2
+	color: $orange
+	font-size: 30px
+	line-height: 10px
+	font-weight: 700
+
+.links_to a
+	color: $blue
+	text-decoration: none
+	transition: color $base-duration $base-timing
+
+.links_to a:hover, a:focus
+	color: $orange
+	text-decoration: underline
+
 .events h3
+	color: $blue
 	font-weight: 100
+	font-size: 30px
 	font-style: italic
+
+.events h4
+	color: $orange
+	font-size: 13px
+	font-weight: 100
+	font-style: normal
+
+///////// RIGHT SECTION 1 / FEATURES /////////////
 
 .features_section
 	+span-columns(8)
@@ -46,31 +131,146 @@ html, body
 .main_feature_row
 	+span-columns(12)
 	height: 200px
-	background: #dcc9d3
+	background-size: cover
+	background-position: 50%
+	text-align: center
+	color: $blue
+	font-size: 50px
 
-.secondary_feature
-	+span-columns(6)
+.main_feature_row h1
+	color: $blue
+	line-height: 16px
+	text-decoration: none
+	padding-top: 20px
+	transition: color $base-duration $base-timing
+
+.main_feature_row a:hover, a:focus
+	color: $orange
+
+.gray_overlay
+	background-color: rgba(0,0,0,0.4)
+	background-size: cover
+	+span-columns(12)
 	height: 200px
-	background: #bddc00
+
+.secondary_features
+	+span-columns(12)
+	height: 200px
+	display: inline-block
+
+.feature_grid
+	+span-columns(6)
+	background-size: cover
+	height: 200px
+	text-align: center
+	background-position: 50%
+
+.feature_grid a
+	color: $blue
+	font-size: 20px
+	margin-top: 200px
+	text-decoration: none
+	transition: color $base-duration $base-timing
+
+.feature_grid a:hover, a:focus
+	color: $orange
+
+.photo_links
+	padding-top: 50px
+
+///////// FINAL SECTION / MAGAZINE /////////////
 
 .issue_section
 	+span-columns(8)
 	height: 400px
-	background: #dc711e
+	background: $blue
+
+.issue_title
+	height: 100px
+	text-align: center
+	border-bottom: 1px solid $dark-gray
+	border-top: 1px solid $dark-gray
+	background: $orange
+	
+.issue_title h1
+	font-size: 80px
+	display: inline
+	font-weight: 700
+	color: $blue
 
 .main_vertical_column
 	+span-columns(4)
-	background: #3edc60
-	height: 400px
+	height: 300px
+	padding: 20px
+	padding-top: 30px
+	text-align: center
+	border-right: 1px solid $dark-gray
+
+.main_vertical_column img
+	max-height: 230px 
+	-webkit-box-shadow: 0px 0px 42px -1px rgba(163,163,163,1)
+	-moz-box-shadow: 0px 0px 42px -1px rgba(163,163,163,1)
+	box-shadow: 0px 0px 42px -1px rgba(163,163,163,1)
 
 .secondary_vertical_column
-	+span-columns(3)
-	background: #dca400
-	height: 400px
+	+span-columns(5)
+	height: 300px
+	padding-left: 30px
+	padding-top: 20px
+
+.secondary_vertical_column h3
+	font-style: italic
+	font-size: 13px
+
+.secondary_vertical_column p
+	font-style: regular
+	font-weight: 400
+	font-size: 12px
+	width: 320px
+	text-align: justify
+
 
 .third_vertical_column
-	+span-columns(2)
-	background: #dc1e2c
-	height: 400px 
+	+span-columns(3)
+	border-left: 1px solid $dark-gray
+	height: 300px 
+	padding-left: 0px
+	padding-top: 20px
+	text-align: center
+
+.third_vertical_column h3
+	font-style: italic
+	font-size: 13px
+	font-weight: bold
+
+.actions
+	background-color: $orange
+	border-radius: 0px
+	width: 100px
+	margin: 0 auto
+	text-align: center
+	font-style: italic
+	-webkit-box-shadow: 0px 0px 42px -1px rgba(163,163,163,1)
+	-moz-box-shadow: 0px 0px 42px -1px rgba(163,163,163,1)
+	box-shadow: 0px 0px 10px -1px rgba(163,163,163,1)
+
+.actions2
+	background-color: $dark-gray
+	border-radius: 0px
+	margin: 0 auto
+	width: 100px
+	text-align: center
+	font-style: italic
+	-webkit-box-shadow: 0px 0px 42px -1px rgba(163,163,163,1)
+	-moz-box-shadow: 0px 0px 42px -1px rgba(163,163,163,1)
+	box-shadow: 0px 0px 10px -1px rgba(163,163,163,1)
+
+.actions a
+	color: $dark-gray
+	font-size: 12px
+
+.actions2 a
+	color: $blue
+	font-size: 12px
 
 	

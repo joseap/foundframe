@@ -1,11 +1,17 @@
-<div class="wrapper-for-content-outside-of-footer">
-	<div class="full_view">
-		<div class="text_block">
-			<h1><%= @photographer.name %></h1>
-			<hr>
-			<h2><%= @photographer.description %></h2>
-		</div>
-		<%= image_tag @photographer.avatar.url(:big) %>
+<div class="portfolio_view">
+	<div class="portfolio_text">
+		<h1><%= @photographer.name %></h1>
+		<h2><%= @photographer.project %></h2>
+		<hr>
+		<h3><%= simple_format(@photographer.description) %></h3>
+		<br>
+		<span class="prev_next"><%= link_to "Previous", @previous %> &#8621; <%= link_to "Next", @next %></span>
 	</div>
+	<div class="slideshow">
+		<%= image_tag @photographer.avatar.url %><br>
+		<% if session[:user_id] == 2 %>
+			<li><%= link_to "Edit feature", edit_photographer_path %></li>
+		<% end %>
+	</div>
+	<br>
 </div>
-

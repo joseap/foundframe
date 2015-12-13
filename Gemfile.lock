@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/alexreisner/geocoder.git
+  revision: 95ec1aaeedd24a899f907505c21b3f53a6b5f1d3
+  specs:
+    geocoder (1.2.12)
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 850a199da1f827571d3a21b075be45fe7d853e8f
   specs:
@@ -70,10 +76,11 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
-    geocoder (1.2.12)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     i18n (0.7.0)
+    icalendar (2.3.0)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -167,7 +174,9 @@ DEPENDENCIES
   bourbon
   byebug
   coffee-rails (~> 4.1.0)
-  geocoder
+  geocoder!
+  gmaps4rails
+  icalendar
   jbuilder (~> 2.0)
   jquery-rails
   neat

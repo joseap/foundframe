@@ -27,7 +27,10 @@ header.navigation {
   .navigation-wrapper {
     @include clearfix;
     @include outer-container;
-    position: relative;
+    border-bottom: 1px solid $dark-gray;
+    background-color: $blue;
+    position: fixed;
+    width: 100%;
     z-index: 9999;
   }
 
@@ -68,7 +71,6 @@ header.navigation {
 
   nav {
     float: none;
-    min-height: $navigation-height;
     z-index: 9999999;
 
     @include media ($horizontal-bar-mode) {
@@ -190,6 +192,7 @@ header.navigation {
 
       button[type=submit] {
         background: $blue;
+        color: $blue;
         border: none;
         bottom: 0.3em;
         left: auto;
