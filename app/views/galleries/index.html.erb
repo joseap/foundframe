@@ -1,4 +1,4 @@
-	<% @galleries.each do |gallery| %>
+	<% @galleries.reverse_each do |gallery| %>
 		<section>
 			<div class="grid_column animated fadeIn" style="background-image: url('<%= gallery.avatar %>')">
 				<div class="column_wrapper">
