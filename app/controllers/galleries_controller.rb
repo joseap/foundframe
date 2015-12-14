@@ -31,7 +31,7 @@ class GalleriesController < ApplicationController
 
 		if @gallery.save
 			flash[:gallery_created] = "New Gallery created"
-			redirect_to galleries_path
+			redirect_to @gallery
 		else
 			flash[:correct_gallery] = "Please fill the form correctly. \n Title should contain at least 5 characters"
 			render :new
