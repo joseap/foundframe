@@ -6,7 +6,7 @@ class Gallery < ActiveRecord::Base
 	after_validation :geocode   # auto-fetch coordinates
 
 	belongs_to :user
-	has_many :exhibitions
+	has_many :exhibitions, dependent: :destroy
 
 	validates :name, presence: true, length: { minimum: 5 }
 	validates :address, presence: true, length: { minimum: 5}

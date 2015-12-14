@@ -1,5 +1,5 @@
 <div class="wrapper-for-content-outside-of-footer">
-	<% @exhibitions.each do |exhibition| %>
+	<% @exhibitions.reverse_each do |exhibition| %>
 		<section>
 			<div class="grid_column animated fadeIn" style="background-image: url('<%= exhibition.avatar %>')">
 				<div class="column_wrapper">
