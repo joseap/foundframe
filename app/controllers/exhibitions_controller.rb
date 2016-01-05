@@ -17,6 +17,7 @@ class ExhibitionsController < ApplicationController
 	      format.ics do
 	        cal = Icalendar::Calendar.new
 	          event = Icalendar::Event.new
+	          event.location = @gallery.address
 	          event.dtstart = @exhibition.date
 	          event.dtend = @exhibition.end_date
 	          event.summary = @exhibition.name.titleize

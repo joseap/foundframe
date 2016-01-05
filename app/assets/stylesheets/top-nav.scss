@@ -159,6 +159,18 @@ header.navigation {
     }
   }
 
+  .socialicons {
+    float: right;
+    margin-right: 120px;
+    display: inline; 
+    padding-top: 0.85em;
+  }
+
+  .socialicons li {
+    display: inline;
+    padding: 8px;
+  }
+
   // Search bar
 
   .search-bar {

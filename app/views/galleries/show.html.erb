@@ -3,7 +3,7 @@
 		<h1><%= @gallery.name %></h1>
 		<hr>
 		<h2><%= @gallery.address %></h2>
-		<h3><%= @gallery.phone %></h3>
+		<h3><i class="fa fa-phone"></i> <%= @gallery.phone %></h3>
 		<br>
 		<% if session[:user_id] == 2 %>
 			<li><%= link_to "Edit gallery", edit_gallery_path(params[:id]) %></li>
